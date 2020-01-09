@@ -1,0 +1,44 @@
+{
+  "id": "1604694",
+  "name": "for-react-ts",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "129306",
+      "name": "heart",
+      "font_class": "heart-outline",
+      "unicode": "e8e4",
+      "unicode_decimal": 59620
+    },
+    {
+      "icon_id": "995249",
+      "name": "drop-down",
+      "font_class": "xiala",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "1030014",
+      "name": "message",
+      "font_class": "message",
+      "unicode": "e768",
+      "unicode_decimal": 59240
+    },
+    {
+      "icon_id": "7736130",
+      "name": "heart",
+      "font_class": "heart",
+      "unicode": "e8f4",
+      "unicode_decimal": 59636
+    },
+    {
+      "icon_id": "10258917",
+      "name": "email",
+      "font_class": "email",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    }
+  ]
+}
