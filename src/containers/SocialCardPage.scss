@@ -1,10 +1,12 @@
-$color-border: lightgray;
+$color-border: #E7EEF2;
 $shadow: darkgray;
-$primary: #61dafb;
+$primary: #1A73CD;
+$font-light: #8A98A2;
 .social-card {
+  min-width: 400px;
   min-height: 50px;
   width: 50vw;
-  margin: auto;
+  margin: 50px auto;
   border: {
     top: 1px solid $color-border;
     bottom: 1px solid $color-border;
@@ -14,11 +16,11 @@ $primary: #61dafb;
     box-shadow: 
       .3em .3em 1em $color-border;
   }
-
+  // 头部
   &-header {
     margin: 10px 0;
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 8vw 40vw;
     align-items: center;
     justify-items: center;
     .logo {
@@ -38,6 +40,54 @@ $primary: #61dafb;
       .author {
         color: $primary;
       }
+      .date {
+        color: $font-light;
+      }
     }
+  }
+
+  &-body,
+  &-footer {
+    width: 40vw;
+    margin-left: 8vw;
+  }
+
+  // body
+  &-body {
+    border: 1px solid $color-border;
+    border-radius: 5px;
+    .card {
+      &-title-box {
+        height: 260px;
+        background-color: #FFA003;
+        color: white;
+        display: flex;
+        align-items: center;
+        font-size: 26px;
+        font-weight: bold;
+        border-top: {
+          left-radius: 5px;
+          right-radius: 5px;
+        }
+        .title-text {
+          text-align: left;
+          padding: 40px;
+        }
+      }
+      &-content {
+        padding: 10px 16px 20px 16px;
+        text-align: left;
+        font-size: 14px;
+        .title {
+          font-weight: bold;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  &-footer {
+    height: 40px;
+    margin-top: 10px;
   }
 }
