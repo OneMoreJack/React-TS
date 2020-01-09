@@ -89,5 +89,18 @@ $font-light: #8A98A2;
   &-footer {
     height: 40px;
     margin-top: 10px;
+    text-align: left;
+    .statics {
+      display: inline-block;
+      color: $font-light;
+      width: 15%;
+      .iconfont {
+        font-size: 20px;
+        margin-right: 10px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
   }
 }
