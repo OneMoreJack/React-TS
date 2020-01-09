@@ -1,14 +1,15 @@
 import React from 'react';
 import logo from '../images/logo.svg';
-import './App.css';
+import './App.scss';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from 'react-router-dom';
-// const Basic = React.lazy(() => import('./Basic'))
-import Basic from './Basic'
+
+import Basic from './Basic';
+import SocialPage from './SocialCardPage';
 
 const App: React.FC = () => {
   return (
@@ -20,12 +21,16 @@ const App: React.FC = () => {
         {/* 导航 */}
         <nav>
           <Link to="/basic">Basic</Link>&nbsp;
+          <Link to="/social-card">Social Card</Link>&nbsp;
         </nav>
         <hr />
         {/* 路由 */}
         <Switch>
           <Route path="/basic">
             <Basic />
+          </Route>
+          <Route path="/social-card">
+            <SocialPage />
           </Route>
         </Switch>
       </Router>

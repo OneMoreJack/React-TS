@@ -1,0 +1,43 @@
+$color-border: lightgray;
+$shadow: darkgray;
+$primary: #61dafb;
+.social-card {
+  min-height: 50px;
+  width: 50vw;
+  margin: auto;
+  border: {
+    top: 1px solid $color-border;
+    bottom: 1px solid $color-border;
+  }
+  
+  &:hover {
+    box-shadow: 
+      .3em .3em 1em $color-border;
+  }
+
+  &-header {
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    align-items: center;
+    justify-items: center;
+    .logo {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .right {
+      width: 100%;
+      text-align: left;
+      font-size: 16px;
+      .title,
+      .author {
+        font-weight: bold;
+      }
+      .author {
+        color: $primary;
+      }
+    }
+  }
+}
