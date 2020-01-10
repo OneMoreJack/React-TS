@@ -27,11 +27,67 @@
       "unicode_decimal": 59240
     },
     {
+      "icon_id": "1106931",
+      "name": "阴天",
+      "font_class": "clound-heavy",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "1346963",
+      "name": "多云",
+      "font_class": "cloud",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "3758183",
+      "name": "晴天",
+      "font_class": "sunny",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "3762574",
+      "name": "中雪",
+      "font_class": "snow-m",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "7428640",
+      "name": "大雪",
+      "font_class": "snow-heavy",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "7572332",
+      "name": "天气-雨夹雪",
+      "font_class": "snow-rain",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    },
+    {
+      "icon_id": "7573355",
+      "name": "天气-大暴雨",
+      "font_class": "raining-heavy",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
       "icon_id": "7736130",
       "name": "heart",
       "font_class": "heart",
       "unicode": "e8f4",
       "unicode_decimal": 59636
+    },
+    {
+      "icon_id": "8688597",
+      "name": "小雨",
+      "font_class": "raining-s",
+      "unicode": "e6e7",
+      "unicode_decimal": 59111
     },
     {
       "icon_id": "10258917",
