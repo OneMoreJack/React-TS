@@ -1,3 +1,8 @@
+$color-border: #E7EEF2;
+$shadow: darkgray;
+$primary: #1A73CD;
+$font-light: #8A98A2;
+
 .App {
   text-align: center;
 }
@@ -22,9 +27,23 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  nav {
+    width: 90%;
+    text-align: left;
+    padding: 20px;
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 10px;
+      &:hover {
+        @extend %app-link;
+      }
+    }
+  }
 }
 
-.App-link {
+%app-link {
   color: #61dafb;
 }
 

@@ -1,7 +1,5 @@
-$color-border: #E7EEF2;
-$shadow: darkgray;
-$primary: #1A73CD;
-$font-light: #8A98A2;
+@import './App.scss';
+
 .social-card {
   min-width: 400px;
   min-height: 50px;
@@ -94,6 +92,9 @@ $font-light: #8A98A2;
       display: inline-block;
       color: $font-light;
       width: 15%;
+      &.active {
+        color: lightcoral;
+      }
       .iconfont {
         font-size: 20px;
         margin-right: 10px;

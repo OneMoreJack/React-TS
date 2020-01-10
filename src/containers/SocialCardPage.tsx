@@ -73,7 +73,7 @@ function CardFooter(props: footerProps) {
         <i className="iconfont icon-message"></i>
         { comments }
       </span>
-      <span className="statics">
+      <span className={`statics ${ isFavor ? 'active' : null }`}>
         <i className="iconfont icon-heart-outline" onClick={ handleFavorLocal }></i>
         { favor }
       </span>
@@ -84,9 +84,7 @@ function CardFooter(props: footerProps) {
   )
 }
 
-interface cardProps extends headerProps {
-
-}
+interface cardProps extends headerProps {}
 function SocialCard(props: cardProps) {
   const [item, setItem] = useState<cardInfo | null>(null);
 
@@ -96,9 +94,15 @@ function SocialCard(props: cardProps) {
   }, [props]);
 
   const handleFavor = (action: string) => {
-    if (action === 'favor') {
-      
+    if (!item) return;
+    let statics: {favor: number, comments: number} = {...item.statics};
+    let favor: number = statics.favor;
+    if (action === 'favor' && item) {
+      Object.assign(statics, { favor: ++favor });
+    } else {
+      Object.assign(statics, { favor: --favor });
     }
+    setItem({...item, statics})
   }
 
   return (
