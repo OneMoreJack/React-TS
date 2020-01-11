@@ -10,6 +10,7 @@ import {
 
 import Basic from './Basic';
 import SocialPage from './SocialCardPage';
+import WeatherCard from './WeatherForecast'
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <nav>
           <Link to="/basic">Basic</Link>&nbsp;
           <Link to="/social-card">Social Card</Link>&nbsp;
+          <Link to="/weather">Weather Forecast</Link>&nbsp;
         </nav>
       </header>
         {/* 路由 */}
@@ -30,6 +32,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/social-card">
             <SocialPage />
+          </Route>
+          <Route path="/weather">
+            <WeatherCard />
           </Route>
         </Switch>
       </Router>

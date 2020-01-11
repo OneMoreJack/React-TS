@@ -12,7 +12,9 @@
  * 广州：1809858
  */
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import './WeatherForecast.scss'
+import { getWeatherData, weatherParams } from '../api/weather'
 
 let res: object = {
   "cod": "200",
@@ -66,3 +68,37 @@ let res: object = {
     "sunset": 1578413272
   }
 }
+
+function WeatherCard() {
+  enum cityID {
+    shenzhen = 1795565,
+    shanghai = 1796236,
+    beijing = 1816670,
+    guangzhou = 1809858
+  }
+  const APPID = '1229d87385e87ec6b9ba364b15e96eb3'
+
+  let [id, setID] = useState(cityID.shenzhen)
+  let [data, setData] = useState<object | null>(null)
+  useEffect(() => {
+    getData({ id, APPID })
+  }, [id])
+
+  async function getData(params: weatherParams) {
+    const res = await getWeatherData(params)
+    console.log(res)
+    const { data } = res;
+    if (data.cod !== '200') {
+      return
+    }
+    setData(data)
+  }
+
+  return (
+    <section className="weather-card">
+      weather
+    </section>
+  )
+}
+
+export default WeatherCard;

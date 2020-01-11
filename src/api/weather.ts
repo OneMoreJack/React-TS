@@ -1,3 +1,7 @@
 import { get } from './index'
 
-export const getWeatherData = (params: object) => get(`api.openweathermap.org/data/2.5/forecast`, params)
+export interface weatherParams {
+  id: number,
+  APPID: string,
+}
+export const getWeatherData = (params: weatherParams) => get(`http://api.openweathermap.org/data/2.5/forecast`, params)
