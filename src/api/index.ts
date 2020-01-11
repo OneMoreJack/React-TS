@@ -1,3 +1,5 @@
 import axios from 'axios';
 
-export const get = (url: string, params: object) => axios.get(url, { params });
+const Axi = axios.create()
+
+export const get = <T>(url: string, params: object) => Axi.get<T>(url, { params });

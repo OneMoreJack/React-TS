@@ -70,6 +70,10 @@ let res: object = {
 }
 
 function WeatherCard() {
+  enum language {
+    english = 'en',
+    chinese = 'zh_cn'
+  }
   enum cityID {
     shenzhen = 1795565,
     shanghai = 1796236,
@@ -79,15 +83,16 @@ function WeatherCard() {
   const APPID = '1229d87385e87ec6b9ba364b15e96eb3'
 
   let [id, setID] = useState(cityID.shenzhen)
+  let [lang, setLang] = useState(language.chinese)
   let [data, setData] = useState<object | null>(null)
   useEffect(() => {
-    getData({ id, APPID })
-  }, [id])
+    getData({ id, APPID, cnt: 5, lang })
+  }, [id, lang])
 
   async function getData(params: weatherParams) {
     const res = await getWeatherData(params)
-    console.log(res)
     const { data } = res;
+    console.log(res.data)
     if (data.cod !== '200') {
       return
     }
