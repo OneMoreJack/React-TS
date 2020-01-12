@@ -30,7 +30,7 @@ export interface dailyData {
 /**
  * @interface 天气数据里的城市数据类型接口
  */
-interface cityData {
+export interface cityData {
   id: number,
   name: string,
   sunrise: number,

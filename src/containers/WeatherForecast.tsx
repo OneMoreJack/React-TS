@@ -16,7 +16,7 @@
 
 import React, { useState, useEffect } from 'react'
 import './WeatherForecast.scss'
-import { getWeatherData, weatherParams, weatherData, dailyData } from '../api/weather'
+import { getWeatherData, weatherParams, weatherData, dailyData, cityData } from '../api/weather'
 import { tempTransfer } from '../utils'
 
 let res: object = {
@@ -106,6 +106,29 @@ function DailyTable(props: dailyProps) {
   )
 }
 
+interface detailProps {
+  data: dailyData,
+  city: cityData
+}
+function DetailBoard(props: detailProps) {
+  const { data, city } = props;
+  return (
+    <div className="detail-board">
+      <header>
+        header
+      </header>
+      <div className="conditions">
+        <div>
+          <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="icon"/>
+        </div>
+      </div>
+      <div className="desc-day">
+
+      </div>
+    </div>
+  )
+}
+
 function WeatherCard() {
   enum language {
     english = 'en',
@@ -151,6 +174,11 @@ function WeatherCard() {
 
   return (
     <section className="weather-card">
+      {dayData && data &&
+        <DetailBoard
+          data={dayData}
+          city={data.city} />
+      }
       {data?.list && 
         data.list.map(day => (
           <DailyTable
