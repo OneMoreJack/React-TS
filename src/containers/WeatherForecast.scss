@@ -1,11 +1,30 @@
 @import './App.scss';
+$bg-gray: #f7f7f7;
+
 .weather-card {
-  width: 50vw;
+  width: 580px;
+  padding: 16px;
   margin: 50px auto;
   min-height: 100px;
   border: 1px solid $color-border;
-  &:hover {
-    box-shadow: 
-      .3em .3em 1em $color-border;
+  box-shadow: 
+    .3em .3em 1em $color-border;
+
+  .daily-table {
+    display: inline-block;
+    height: 127px;
+    width: 78px;
+    margin: 0 2px;
+    background: $bg-gray;
+    border-top: 3px solid $bg-gray;
+    font-size: 14px;
+    &.active {
+      border-top: 3px solid lightcoral;
+      background: white;
+    }
+
+    .vpc {
+      padding: 10px 0 13px 0;
+    }
   }
 }
