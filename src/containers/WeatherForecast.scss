@@ -27,4 +27,37 @@ $bg-gray: #f7f7f7;
       padding: 10px 0 13px 0;
     }
   }
+
+  .detail-board {
+    text-align: left;
+    .conditions {
+      display: flex;
+      align-items: center;
+      &>div { 
+        display: inline-block;
+      }
+      .icno-wrap img {
+        vertical-align: middle;
+      }
+      .current_temp {
+        height: 80px;
+        font-size: 60px;
+      }
+      .temp_unit {
+        height: 60px;
+        div {
+          height: 30px;
+          line-height: 30px;
+          font-size: 20px;
+          width: 100%;
+          text-align: center;
+          font-weight: lighter;
+        }
+      }
+      .more {
+        font-size: 14px;
+      }
+
+    }
+  }
 }

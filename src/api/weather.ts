@@ -17,6 +17,7 @@ export interface dailyData {
     temp_min: number,
     temp_max: number,
     humidity: number,
+    pressure: number
   },
   weather: [{
     description: string,

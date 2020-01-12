@@ -115,11 +115,21 @@ function DetailBoard(props: detailProps) {
   return (
     <div className="detail-board">
       <header>
-        header
+        <h3>{ city.name }</h3>
       </header>
       <div className="conditions">
-        <div>
+        <div className="icon-wrap">
           <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="icon"/>
+        </div>
+        <div className="current_temp">{ tempTransfer(data.main.temp) }</div>
+        <div className="temp_unit">
+          <div>°C</div>
+          <div>F</div>
+        </div>
+        <div className="more">
+          <div>气压：{ data.main.pressure } hPa</div>
+          <div>风速：{ data.wind.speed } m/s</div>
+          <div>湿度：{ data.main.humidity } %</div>
         </div>
       </div>
       <div className="desc-day">
