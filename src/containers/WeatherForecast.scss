@@ -1,5 +1,6 @@
 @import './App.scss';
 $bg-gray: #f7f7f7;
+$active: lightcoral;
 
 .weather-card {
   text-align: left;
@@ -21,8 +22,11 @@ $bg-gray: #f7f7f7;
     border-top: 3px solid $bg-gray;
     font-size: 14px;
     &.active {
-      border-top: 3px solid lightcoral;
+      border-top: 3px solid $active;
       background: white;
+    }
+    &:hover {
+      cursor: pointer;
     }
 
     .vpc {
@@ -54,6 +58,13 @@ $bg-gray: #f7f7f7;
           width: 100%;
           text-align: center;
           font-weight: lighter;
+        }
+      }
+
+      .temp_unit>div {
+        cursor: pointer;
+        &.active {
+          color: $active;
         }
       }
 
