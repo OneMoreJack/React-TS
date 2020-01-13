@@ -29,6 +29,26 @@ enum dayEnum {
   周六
 }
 
+/**
+ * hooks 格式化时间 周一 13
+ */
+function useDayTime(dt: number): string {
+  let [dayTime, setDayTime] = useState(new Date(dt))
+  let [day, setDay] = useState<string>(dayEnum[dayTime.getDay()])
+  let [date, setDate] = useState<number>(dayTime.getDate())
+
+  useEffect(() => {
+    setDayTime(new Date(dt))
+  }, [dt])
+
+  useEffect(() => {
+    setDay(dayEnum[dayTime.getDay()])
+    setDate(dayTime.getDate())
+  },[dayTime])
+
+  return `${day} ${date}`
+}
+
 let res: object = {
   "cod": "200",
   "message": 0,
@@ -89,16 +109,12 @@ interface dailyProps {
 }
 function DailyTable(props: dailyProps) {
   const { data, active, handleChoose } = props
-  const [date, setDate] = useState<Date | null>(null)
-  useEffect(() => {
-    setDate(new Date(props.data.dt * 1000))
-  }, [props])
   return (
     <div 
       className={`daily-table ${ active ? 'active' : null }`}
       onClick={() => handleChoose(data)}>
       <div className="vpc">
-        <div>{ date && `${ dayEnum[date.getDay()] } ${date.getDate()}` }</div>
+        <div>{ useDayTime(props.data.dt * 1000) }</div>
         <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}.png`} alt="icon"/>
         <div>{ tempTransfer(data.main.temp_max) }°</div>
         <div>{ tempTransfer(data.main.temp_min) - 8 }°</div>
@@ -113,10 +129,6 @@ interface detailProps {
 }
 function DetailBoard(props: detailProps) {
   const { data, city } = props;
-  const [date, setDate] = useState<Date | null>(null)
-  useEffect(() => {
-    setDate(new Date(props.data.dt * 1000))
-  }, [props])
 
   return (
     <div className="detail-board">
@@ -144,7 +156,7 @@ function DetailBoard(props: detailProps) {
       </div>
       <div className="desc-day">
         <div>{ data.weather[0].description }</div>
-        <div className="dayTime">{ date && `${ dayEnum[date.getDay()] } ${date.getDate()}` }</div>
+        <div className="dayTime">{ useDayTime(props.data.dt * 1000) }</div>
       </div>
     </div>
   )
