@@ -86,8 +86,10 @@ $active: lightcoral;
 
       .temp_unit>div {
         cursor: pointer;
+        color: $font-light;
         &.active {
           color: $active;
+          font-weight: bold;
         }
       }
 
