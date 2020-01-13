@@ -49,62 +49,10 @@ function useDayTime(dt: number): string {
   return `${day} ${date}`
 }
 
-let res: object = {
-  "cod": "200",
-  "message": 0,
-  "cnt": 40,
-  "list": [
-    {
-      "dt": 1578409200,
-      "main": {
-        "temp": 284.92,
-        "feels_like": 281.38,
-        "temp_min": 283.58,
-        "temp_max": 284.92,
-        "pressure": 1020,
-        "sea_level": 1020,
-        "grnd_level": 1016,
-        "humidity": 90,
-        "temp_kf": 1.34
-      },
-      "weather": [
-        {
-          "id": 804,
-          "main": "Clouds",
-          "description": "overcast clouds",
-          "icon": "04d"
-        }
-      ],
-      "clouds": {
-        "all": 100
-      },
-      "wind": {
-        "speed": 5.19,
-        "deg": 211
-      },
-      "sys": {
-        "pod": "d"
-      },
-      "dt_txt": "2020-01-07 15:00:00"
-    },
-  ],
-  "city": {
-    "id": 2643743,
-    "name": "London",
-    "coord": {
-      "lat": 51.5073,
-      "lon": -0.1277
-    },
-    "country": "GB",
-    "timezone": 0,
-    "sunrise": 1578384285,
-    "sunset": 1578413272
-  }
-}
-
 interface dailyProps {
   data: dailyData,
   active: boolean,
+  metric: string,
   handleChoose: (data: dailyData) => void
 }
 function DailyTable(props: dailyProps) {
@@ -116,8 +64,8 @@ function DailyTable(props: dailyProps) {
       <div className="vpc">
         <div>{ useDayTime(props.data.dt * 1000) }</div>
         <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}.png`} alt="icon"/>
-        <div>{ tempTransfer(data.main.temp_max) }°</div>
-        <div>{ tempTransfer(data.main.temp_min) - 8 }°</div>
+        <div>{ tempTransfer(data.main.temp_max, props.metric) }°</div>
+        <div>{ tempTransfer(data.main.temp_min, props.metric) - 8 }°</div>
       </div>
     </div>
   )
@@ -125,10 +73,12 @@ function DailyTable(props: dailyProps) {
 
 interface detailProps {
   data: dailyData,
-  city: cityData
+  city: cityData,
+  metric: string,
+  handleMetric: (metric: string) => void
 }
 function DetailBoard(props: detailProps) {
-  const { data, city } = props;
+  const { data, city, metric, handleMetric } = props;
 
   return (
     <div className="detail-board">
@@ -139,14 +89,22 @@ function DetailBoard(props: detailProps) {
         <div className="icon-wrap">
           <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="icon"/>
         </div>
-        <div className="current_temp">{ tempTransfer(data.main.temp) }</div>
+        <div className="current_temp">{ tempTransfer(data.main.temp, metric) }</div>
         <div className="temp_unit">
-          <div>°C</div>
-          <div>F</div>
+          <div 
+            className={`${metric === 'celsius' ? 'active' : null }`}
+            onClick={() => handleMetric('celsius')}>
+            °C
+          </div>
+          <div
+            className={`${metric === 'celsius' ? null : 'active' }`}
+            onClick={() => handleMetric('fahrenheit')}>
+            F
+          </div>
         </div>
         <div className="temp_range">
-        <div>{ tempTransfer(data.main.temp_max) }°</div>
-        <div>{ tempTransfer(data.main.temp_min) - 8 }°</div>
+          <div>{ tempTransfer(data.main.temp_max, metric) }°</div>
+          <div>{ tempTransfer(data.main.temp_min, metric) - 8 }°</div>
         </div>
         <div className="more">
           <div>气压：{ data.main.pressure } hPa</div>
@@ -176,8 +134,13 @@ function WeatherCard() {
   const APPID = '1229d87385e87ec6b9ba364b15e96eb3'
 
   let [id, setID] = useState(cityID.shenzhen)
-  let [lang, setLang] = useState(language.chinese)
+  // 语言
+  let [lang] = useState(language.chinese)
+  // 天气接口返回的所有数据
   let [data, setData] = useState<weatherData | null>(null)
+  // 温度单位
+  let [metric, setMetric] = useState('celsius')
+
   useEffect(() => {
     async function getData(params: weatherParams) {
       const res = await getWeatherData(params)
@@ -204,12 +167,18 @@ function WeatherCard() {
     setDayData(data)
   }
 
+  const handleMetric = (metric: string) => {
+    setMetric(metric)
+  }
+
   return (
     <section className="weather-card">
       {dayData && data &&
         <DetailBoard
           data={dayData}
-          city={data.city} />
+          city={data.city}
+          metric={metric}
+          handleMetric={handleMetric} />
       }
       {data?.list && 
         data.list.map(day => (
@@ -217,7 +186,8 @@ function WeatherCard() {
             key={day.dt}
             active={day.dt === dayData?.dt}
             data={day}
-            handleChoose={handleChoose} />
+            handleChoose={handleChoose}
+            metric={metric} />
         ))}
     </section>
   )
