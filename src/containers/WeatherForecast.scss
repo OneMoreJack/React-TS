@@ -37,6 +37,28 @@ $active: lightcoral;
 
   .detail-board {
     text-align: left;
+    header {
+      h3 {
+        display: inline-block;
+      }
+      select {
+        appearance: none;
+        width: 120px;
+        height: 26px;
+        padding: 0 5px;
+        border: 1px solid lightgray;
+        border-radius: 3px;
+        float: right;
+        outline: lightgray;
+        &:hover {
+          cursor: pointer;
+        }
+        option {
+          border-color: lightgray;
+          outline: lightgray;
+        }
+      }
+    }
     .conditions {
       display: flex;
       align-items: center;

@@ -28,6 +28,16 @@ enum dayEnum {
   周五,
   周六
 }
+enum language {
+  english = 'en',
+  chinese = 'zh_cn'
+}
+enum cityID {
+  shenzhen = 1795565,
+  shanghai = 1796236,
+  beijing = 1816670,
+  guangzhou = 1809858
+}
 
 /**
  * hooks 格式化时间 周一 13
@@ -75,15 +85,22 @@ interface detailProps {
   data: dailyData,
   city: cityData,
   metric: string,
-  handleMetric: (metric: string) => void
+  handleMetric: (metric: string) => void,
+  handleCity: (id: number) => void
 }
 function DetailBoard(props: detailProps) {
-  const { data, city, metric, handleMetric } = props;
+  const { data, city, metric, handleMetric, handleCity } = props;
 
   return (
     <div className="detail-board">
       <header>
         <h3>{ city.name }</h3>
+        <select onChange={(e) => handleCity(Number(e.target.value))}>
+          <option value={cityID.shenzhen}>ShenZhen</option>
+          <option value={cityID.shanghai}>ShangHai</option>
+          <option value={cityID.beijing}>BeiJing</option>
+          <option value={cityID.guangzhou}>GuangZhou</option>
+        </select>
       </header>
       <div className="conditions">
         <div className="icon-wrap">
@@ -121,16 +138,6 @@ function DetailBoard(props: detailProps) {
 }
 
 function WeatherCard() {
-  enum language {
-    english = 'en',
-    chinese = 'zh_cn'
-  }
-  enum cityID {
-    shenzhen = 1795565,
-    shanghai = 1796236,
-    beijing = 1816670,
-    guangzhou = 1809858
-  }
   const APPID = '1229d87385e87ec6b9ba364b15e96eb3'
 
   let [id, setID] = useState(cityID.shenzhen)
@@ -170,6 +177,9 @@ function WeatherCard() {
   const handleMetric = (metric: string) => {
     setMetric(metric)
   }
+  const handleCity = (id: number) => {
+    setID(id)
+  }
 
   return (
     <section className="weather-card">
@@ -178,7 +188,8 @@ function WeatherCard() {
           data={dayData}
           city={data.city}
           metric={metric}
-          handleMetric={handleMetric} />
+          handleMetric={handleMetric}
+          handleCity={handleCity} />
       }
       {data?.list && 
         data.list.map(day => (
