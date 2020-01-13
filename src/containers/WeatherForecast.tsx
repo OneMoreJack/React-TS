@@ -179,25 +179,24 @@ function WeatherCard() {
   let [lang, setLang] = useState(language.chinese)
   let [data, setData] = useState<weatherData | null>(null)
   useEffect(() => {
+    async function getData(params: weatherParams) {
+      const res = await getWeatherData(params)
+      const { data } = res
+      dataHandler(data)
+    }
+    function dataHandler(data: weatherData) {
+      if (data.cod !== '200') {
+        return
+      }
+      let { list } = data;
+      list = list.filter((v, index) => index % 8 === 0)
+  
+      setData(Object.assign({}, data, { list }))
+      setDayData(list[0])
+    }
+
     getData({ id, APPID, lang })
   }, [id, lang])
-
-  async function getData(params: weatherParams) {
-    const res = await getWeatherData(params)
-    const { data } = res
-    console.log(data)
-    dataHandler(data);
-  }
-  function dataHandler(data: weatherData) {
-    if (data.cod !== '200') {
-      return
-    }
-    let { list } = data;
-    list = list.filter((v, index) => index % 8 === 0)
-
-    setData(Object.assign({}, data, { list }))
-    setDayData(list[0])
-  }
 
   // 选中的时间段的天气数据
   let [dayData, setDayData] = useState<dailyData | null>(null)
