@@ -2,7 +2,8 @@
 $bg-gray: #f7f7f7;
 
 .weather-card {
-  width: 580px;
+  text-align: left;
+  width: 510px;
   padding: 16px;
   margin: 50px auto;
   min-height: 100px;
@@ -11,9 +12,10 @@ $bg-gray: #f7f7f7;
     .3em .3em 1em $color-border;
 
   .daily-table {
+    text-align: center;
     display: inline-block;
-    height: 127px;
-    width: 78px;
+    height: 137px;
+    width: 98px;
     margin: 0 2px;
     background: $bg-gray;
     border-top: 3px solid $bg-gray;
@@ -43,7 +45,7 @@ $bg-gray: #f7f7f7;
         height: 80px;
         font-size: 60px;
       }
-      .temp_unit {
+      .temp_unit, .temp_range {
         height: 60px;
         div {
           height: 30px;
@@ -54,10 +56,33 @@ $bg-gray: #f7f7f7;
           font-weight: lighter;
         }
       }
-      .more {
-        font-size: 14px;
-      }
 
+      .temp_range {
+        margin-left: 50px;
+        div {
+          font-size: 16px;
+        }
+      }
+      .more {
+        font-size: 12px;
+        margin-left: 100px;
+        div {
+          margin: 5px 0;
+        }
+      }
+    }
+    .desc-day {
+      &>div {
+        display: inline-block;
+      }
+      font-size: 20px;
+      margin-bottom: 20px;
+      .dayTime {
+        &::before {
+          content: "·";
+          margin: 0 6px;
+        }
+      }
     }
   }
 }

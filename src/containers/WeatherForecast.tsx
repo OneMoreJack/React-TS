@@ -19,6 +19,16 @@ import './WeatherForecast.scss'
 import { getWeatherData, weatherParams, weatherData, dailyData, cityData } from '../api/weather'
 import { tempTransfer } from '../utils'
 
+enum dayEnum {
+  周日,
+  周一,
+  周二,
+  周三,
+  周四,
+  周五,
+  周六
+}
+
 let res: object = {
   "cod": "200",
   "message": 0,
@@ -78,15 +88,6 @@ interface dailyProps {
   handleChoose: (data: dailyData) => void
 }
 function DailyTable(props: dailyProps) {
-  enum dayEnum {
-    周日,
-    周一,
-    周二,
-    周三,
-    周四,
-    周五,
-    周六
-  }
   const { data, active, handleChoose } = props
   const [date, setDate] = useState<Date | null>(null)
   useEffect(() => {
@@ -98,7 +99,7 @@ function DailyTable(props: dailyProps) {
       onClick={() => handleChoose(data)}>
       <div className="vpc">
         <div>{ date && `${ dayEnum[date.getDay()] } ${date.getDate()}` }</div>
-        <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}.png`}/>
+        <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}.png`} alt="icon"/>
         <div>{ tempTransfer(data.main.temp_max) }°</div>
         <div>{ tempTransfer(data.main.temp_min) - 8 }°</div>
       </div>
@@ -112,6 +113,11 @@ interface detailProps {
 }
 function DetailBoard(props: detailProps) {
   const { data, city } = props;
+  const [date, setDate] = useState<Date | null>(null)
+  useEffect(() => {
+    setDate(new Date(props.data.dt * 1000))
+  }, [props])
+
   return (
     <div className="detail-board">
       <header>
@@ -126,6 +132,10 @@ function DetailBoard(props: detailProps) {
           <div>°C</div>
           <div>F</div>
         </div>
+        <div className="temp_range">
+        <div>{ tempTransfer(data.main.temp_max) }°</div>
+        <div>{ tempTransfer(data.main.temp_min) - 8 }°</div>
+        </div>
         <div className="more">
           <div>气压：{ data.main.pressure } hPa</div>
           <div>风速：{ data.wind.speed } m/s</div>
@@ -133,7 +143,8 @@ function DetailBoard(props: detailProps) {
         </div>
       </div>
       <div className="desc-day">
-
+        <div>{ data.weather[0].description }</div>
+        <div className="dayTime">{ date && `${ dayEnum[date.getDay()] } ${date.getDate()}` }</div>
       </div>
     </div>
   )
