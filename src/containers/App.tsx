@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  NavLink
 } from 'react-router-dom';
 
 import Basic from './Basic';
@@ -20,9 +20,21 @@ const App: React.FC = () => {
         <img src={logo} className="App-logo" alt="logo" />
         {/* 导航 */}
         <nav>
-          <Link to="/basic">Basic</Link>&nbsp;
-          <Link to="/social-card">Social Card</Link>&nbsp;
-          <Link to="/weather">Weather Forecast</Link>&nbsp;
+          <NavLink 
+            to="/basic"
+            activeClassName="selected">
+            Basic
+          </NavLink>&nbsp;
+          <NavLink 
+            to="/social-card"
+            activeClassName="selected">
+            Social Card
+          </NavLink>&nbsp;
+          <NavLink 
+            to="/weather"
+            activeClassName="selected">
+            Weather Forecast
+          </NavLink>&nbsp;
         </nav>
       </header>
         {/* 路由 */}
