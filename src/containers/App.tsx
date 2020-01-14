@@ -10,7 +10,8 @@ import {
 
 import Basic from './Basic';
 import SocialPage from './SocialCardPage';
-import WeatherCard from './WeatherForecast'
+import WeatherCard from './WeatherForecast';
+import Tailwind from './tailwind'
 
 const App: React.FC = () => {
   return (
@@ -35,6 +36,11 @@ const App: React.FC = () => {
             activeClassName="selected">
             Weather Forecast
           </NavLink>&nbsp;
+          <NavLink
+            to="/tailwind"
+            activeClassName="selected">
+            Tailwind
+          </NavLink>
         </nav>
       </header>
         {/* 路由 */}
@@ -47,6 +53,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/weather">
             <WeatherCard />
+          </Route>
+          <Route path="/tailwind">
+            <Tailwind />
           </Route>
         </Switch>
       </Router>
