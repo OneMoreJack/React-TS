@@ -16,7 +16,8 @@
 
 import React, { useState, useEffect } from 'react'
 import './WeatherForecast.scss'
-import { getWeatherData, weatherParams, weatherData, dailyData, cityData } from '../api/weather'
+import { getWeatherData } from '../api/weather'
+import { weatherParams, weatherData, dailyData, cityData  } from '../interfaces/weather'
 import { tempTransfer } from '../utils'
 
 enum dayEnum {
