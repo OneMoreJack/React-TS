@@ -17,18 +17,20 @@ function SearchHeader() {
           <br/>
           Hacker News
         </div>
-        <div className="search-header__container">
-          <span className="search--icon">
-            <i className="iconfont icon-search"></i>
-          </span>
-          <input 
-            type="search"
-            placeholder="Search stories by title, url or author"
-            className="search__input" />
-          <div className="powered-by">
-
-          </div>
+      </div>
+      <div className="search-header__container">
+        <i className="search__icon iconfont icon-search"></i>
+        <input 
+          type="search"
+          placeholder="Search stories by title, url or author"
+          className="search__input" />
+        <div className="powered-by">
+          Search by
+          <img src="https://hn.algolia.com/packs/media/images/logo-algolia-blue-35c461b6.svg" alt="algolia" />
         </div>
+      </div>
+      <div className="search-header__settings">
+        <i className="iconfont icon-setting pointer"></i>
       </div>
     </header>
   )

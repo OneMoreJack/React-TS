@@ -34,6 +34,20 @@
       "unicode_decimal": 59240
     },
     {
+      "icon_id": "1446463",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "5466080",
+      "name": "setting",
+      "font_class": "setting",
+      "unicode": "e72c",
+      "unicode_decimal": 59180
+    },
+    {
       "icon_id": "7736130",
       "name": "heart",
       "font_class": "heart",

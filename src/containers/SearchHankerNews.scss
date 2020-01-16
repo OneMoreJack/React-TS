@@ -1,6 +1,10 @@
 @import './App.scss';
 $hacker-primary: #fe742b;
 
+.pointer {
+  cursor: pointer;
+}
+
 .search {
   &-page {
     text-align: left;
@@ -16,6 +20,7 @@ $hacker-primary: #fe742b;
     padding: 8px;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     background: $hacker-primary;
     &__logo {
       display: flex;
@@ -32,6 +37,7 @@ $hacker-primary: #fe742b;
     &__label {
       display: inline-block;
     }
+
     &__container {
       position: relative;
       display: inline-block;
@@ -41,16 +47,48 @@ $hacker-primary: #fe742b;
       background: white;
       margin: 0 16px;
 
-      .search__input {
-        border-radius: 0;
-        border: none;
-        height: 50px;
-        width: 100%;
-        box-shadow: none;
-        padding: 16px 144px 16px 54px;
-        font-weight: 300;
+      .search {
+        &__icon {
+          position: absolute;
+          top: 12px;
+          left:16px;
+          color: $hacker-primary;
+          font-size: 26px;
+          pointer-events: none;
+        }
+        &__input {
+          border-radius: 0;
+          border: none;
+          height: 50px;
+          width: 100%;
+          box-shadow: none;
+          padding: 16px 144px 16px 54px;
+          font-weight: 300;
+          color: rgba(0,0,0,.75);
+          outline: none;
+          font-size: 16px;
+        }
+      }
+
+      .powered-by {
+        position: absolute;
+        right: 8px;
+        top: calc(50% - 7px);
+        white-space: nowrap;
         color: rgba(0,0,0,.75);
-        outline: none;
+        font-size: 14px;
+        img {
+          height: 14px;
+          transform: translateY(3px);
+          margin-left: 5px;
+        }
+      }
+    }
+
+    &__settings {
+      .iconfont {
+        font-size: 26px;
+        color: white;
       }
     }
   }
