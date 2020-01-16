@@ -11,6 +11,7 @@ import {
 import Basic from './Basic';
 import SocialPage from './SocialCardPage';
 import WeatherCard from './WeatherForecast';
+import SearchHackerNews from './SearchHackerNews'
 
 const App: React.FC = () => {
   return (
@@ -35,6 +36,11 @@ const App: React.FC = () => {
             activeClassName="selected">
             Weather Forecast
           </NavLink>&nbsp;
+          <NavLink 
+            to="/search-news"
+            activeClassName="selected">
+            Hacker News
+          </NavLink>&nbsp;
         </nav>
       </header>
         {/* 路由 */}
@@ -47,6 +53,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/weather">
             <WeatherCard />
+          </Route>
+          <Route path="/search-news">
+            <SearchHackerNews />
           </Route>
         </Switch>
       </Router>

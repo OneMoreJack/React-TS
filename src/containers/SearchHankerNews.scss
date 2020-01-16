@@ -1,0 +1,57 @@
+@import './App.scss';
+$hacker-primary: #fe742b;
+
+.search {
+  &-page {
+    text-align: left;
+    width: 80vw;
+    min-height: 200px;
+    margin: auto;
+    margin-top: 50px;
+    background: #f6f6ee;
+  }
+
+  &-header {
+    height: 54px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    background: $hacker-primary;
+    &__logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      img {
+        width: 48px;
+        height: 48px;
+        margin-right: 8px;
+      }
+    }
+    &__label {
+      display: inline-block;
+    }
+    &__container {
+      position: relative;
+      display: inline-block;
+      height: 50px;
+      width: calc(80vw - 324px);
+      margin-right: 16px;
+      background: white;
+      margin: 0 16px;
+
+      .search__input {
+        border-radius: 0;
+        border: none;
+        height: 50px;
+        width: 100%;
+        box-shadow: none;
+        padding: 16px 144px 16px 54px;
+        font-weight: 300;
+        color: rgba(0,0,0,.75);
+        outline: none;
+      }
+    }
+  }
+}
