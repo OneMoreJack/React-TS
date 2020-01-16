@@ -4,8 +4,24 @@
  * logo: https://hn.algolia.com/packs/media/images/logo-hn-search-a822432b.png
  */
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './SearchHankerNews.scss'
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+// import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
+const useStyles = makeStyles(theme => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
 function SearchHeader() {
   return (
@@ -35,20 +51,58 @@ function SearchHeader() {
     </header>
   )
 }
+interface filterProps {
+  conditions: conditionProps,
+  handleChange: changeHandler
+}
+function Filter(props: filterProps) {
+  const classes = useStyles();
+  const { type, sort, dateRange } = props.conditions;
 
-function Filter() {
   return (
     <div>
-     
+     <FormControl className={classes.formControl}>
+        <InputLabel id="demo-simple-select-label">Type</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={type}
+          onChange={(e) => props.handleChange('type', String(e.target.value))}
+        >
+          <MenuItem value="all">All</MenuItem>
+          <MenuItem value="story">Stories</MenuItem>
+          <MenuItem value="comment">Comments</MenuItem>
+        </Select>
+      </FormControl>
     </div>
   )
 }
 
+interface conditionProps {
+  type: string,
+  sort: string,
+  dateRange: string
+}
+interface changeHandler {
+  (item: string, value: string): void
+}
 function SearchHackerNews() {
+  let [conditions, setConditions] = useState<conditionProps>({
+    type: 'all',
+    sort: '',
+    dateRange: '',
+  })
+
+  const handleChange: changeHandler = (item, value) => {
+    setConditions({...conditions, [item]: value})
+  }
+
   return (
     <div className="search-page">
       <SearchHeader />
-      <Filter />
+      <Filter 
+        conditions={conditions}
+        handleChange={handleChange} />
     </div>
   )
 }
