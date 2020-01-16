@@ -36,10 +36,19 @@ function SearchHeader() {
   )
 }
 
+function Filter() {
+  return (
+    <div>
+     
+    </div>
+  )
+}
+
 function SearchHackerNews() {
   return (
     <div className="search-page">
       <SearchHeader />
+      <Filter />
     </div>
   )
 }
