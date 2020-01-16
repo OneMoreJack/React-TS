@@ -51,29 +51,70 @@ function SearchHeader() {
     </header>
   )
 }
+
 interface filterProps {
   conditions: conditionProps,
   handleChange: changeHandler
 }
+interface filterItem {
+  label: string,
+  key: 'type' | 'sort' | 'dateRange',
+  options: { name: string, value: string }[]
+}
 function Filter(props: filterProps) {
   const classes = useStyles();
-  const { type, sort, dateRange } = props.conditions;
+
+  const selectItems: filterItem[] = [
+    { 
+      label: 'Search', 
+      key: 'type', 
+      options: [
+        {name: 'All', value: 'all'},
+        {name: 'Stories', value: 'story'},
+        {name: 'Comments', value: 'comment'}
+      ]
+    },
+    { 
+      label: 'by', 
+      key: 'sort', 
+      options: [
+        {name: 'Date', value: 'byDate'},
+        {name: 'Popularity', value: 'byPopularity'}
+      ]
+    },
+    { 
+      label: 'for', 
+      key: 'dateRange', 
+      options: [
+        {name: 'All Time', value: 'all'},
+        {name: 'Last 24h', value: 'last24h'},
+        {name: 'Past Week', value: 'pastWeek'},
+        {name: 'Past Month', value: 'pastMonth'},
+        {name: 'Past Year', value: 'pastYear'},
+      ]
+    }
+  ]
 
   return (
-    <div>
-     <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Type</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={type}
-          onChange={(e) => props.handleChange('type', String(e.target.value))}
-        >
-          <MenuItem value="all">All</MenuItem>
-          <MenuItem value="story">Stories</MenuItem>
-          <MenuItem value="comment">Comments</MenuItem>
-        </Select>
-      </FormControl>
+    <div className="filter">
+      { selectItems.map(item => (
+        <FormControl 
+          className={classes.formControl}
+          key={item.label} >
+          <InputLabel>{item.label}</InputLabel>
+          <Select
+            value={props.conditions[item.key]}
+            onChange={(e) => props.handleChange(item.key, String(e.target.value))} >
+            { item.options.map(option => (
+              <MenuItem 
+                value={option.value}
+                key={option.value}>
+                {option.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      ))}
     </div>
   )
 }
@@ -89,8 +130,8 @@ interface changeHandler {
 function SearchHackerNews() {
   let [conditions, setConditions] = useState<conditionProps>({
     type: 'all',
-    sort: '',
-    dateRange: '',
+    sort: 'byPopularity',
+    dateRange: 'all',
   })
 
   const handleChange: changeHandler = (item, value) => {
