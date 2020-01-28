@@ -8,3 +8,16 @@ export function tempTransfer(temp: number, metric: string = 'celsius') {
   }
   return res;
 }
+
+export function debounce<Params extends any[]>(
+  fn: (...args: Params) => any,
+  delay: number = 300
+) : (...args: Params) => void {
+  let timeout: NodeJS.Timeout
+  return (...args: Params) => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      fn(...args)
+    }, delay);
+  }
+}

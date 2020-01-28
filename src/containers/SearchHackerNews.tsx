@@ -4,7 +4,7 @@
  * logo: https://hn.algolia.com/packs/media/images/logo-hn-search-a822432b.png
  */
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, ChangeEvent } from 'react'
 import './SearchHankerNews.scss'
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -12,6 +12,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 // import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { debounce } from '../utils'
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -23,7 +24,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function SearchHeader() {
+interface headerProps {
+  handleInput: (e: ChangeEvent<HTMLInputElement>) => any
+}
+function SearchHeader(props: headerProps) {
   return (
     <header className="search-header">
       <div className="search-header__logo" >
@@ -39,7 +43,8 @@ function SearchHeader() {
         <input 
           type="search"
           placeholder="Search stories by title, url or author"
-          className="search__input" />
+          className="search__input"
+          onChange={ props.handleInput } />
         <div className="powered-by">
           Search by
           <img src="https://hn.algolia.com/packs/media/images/logo-algolia-blue-35c461b6.svg" alt="algolia" />
@@ -133,14 +138,33 @@ function SearchHackerNews() {
     sort: 'byPopularity',
     dateRange: 'all',
   })
+  let [text, setText] = useState<string>('')
+
+  useEffect(() => {
+    console.log('conditions', conditions, 'text', text)
+  }, [conditions, text])
 
   const handleChange: changeHandler = (item, value) => {
     setConditions({...conditions, [item]: value})
   }
 
+
+  /**
+   * 事件处理函数最好同步执行，此处把防抖函数（异步）提取出来
+   * 即同步获得input的值，然后传给异步执行函数
+   */
+  const showValue = debounce((input) => {
+    setText(input)
+  })
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value
+    showValue(input)
+  }
+
   return (
     <div className="search-page">
-      <SearchHeader />
+      <SearchHeader
+        handleInput={ handleInput } />
       <Filter 
         conditions={conditions}
         handleChange={handleChange} />
