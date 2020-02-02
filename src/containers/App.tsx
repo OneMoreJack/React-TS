@@ -11,7 +11,8 @@ import {
 import Basic from './Basic';
 import SocialPage from './SocialCardPage';
 import WeatherCard from './WeatherForecast';
-import SearchHackerNews from './SearchHackerNews'
+import SearchHackerNews from './SearchHackerNews';
+import Music from './Music'
 
 const App: React.FC = () => {
   return (
@@ -41,6 +42,11 @@ const App: React.FC = () => {
             activeClassName="selected">
             Hacker News
           </NavLink>&nbsp;
+          <NavLink 
+            to="/music"
+            activeClassName="selected">
+            Music
+          </NavLink>&nbsp;
         </nav>
       </header>
         {/* 路由 */}
@@ -56,6 +62,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/search-news">
             <SearchHackerNews />
+          </Route>
+          <Route path="/music">
+            <Music />
           </Route>
         </Switch>
       </Router>
