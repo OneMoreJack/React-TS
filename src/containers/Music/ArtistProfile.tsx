@@ -9,7 +9,7 @@ import React, { useState, useEffect } from 'react'
 import { getArtistInfo } from '../../api/music'
 
 function Header() {
-  let [artistId, setArtiseId] = useState<number>(8103)
+  let [artistId, setArtistId] = useState<number>(8103)
   useEffect(() => {
     async function getInfo(id: number) {
       let res = await getArtistInfo({ id })
