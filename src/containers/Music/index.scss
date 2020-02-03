@@ -1,0 +1,21 @@
+.music {
+  .body {
+    background: #f5f5f5;
+    .content {
+      background: #fff;
+      min-height: 70vh;
+      width: calc(100% - 200px);
+      box-shadow:.3em .3em 1em lightgray;
+      margin: auto;
+      .list {
+        &-songs {
+          min-height: 32px;
+          line-height: 32px;
+          &:nth-of-type(2n) {
+            background: #f6f6f6;
+          }
+        }
+      }
+    }
+  }
+}
