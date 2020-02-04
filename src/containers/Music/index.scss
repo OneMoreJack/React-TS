@@ -9,10 +9,16 @@
       margin: auto;
       .list {
         &-songs {
+          text-align: left;
+          padding: 4px 16px;
           min-height: 32px;
           line-height: 32px;
           &:nth-of-type(2n) {
             background: #f6f6f6;
+          }
+          div {
+            display: inline-block;
+            margin: 0 16px;
           }
         }
       }

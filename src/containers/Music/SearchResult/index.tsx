@@ -6,14 +6,14 @@ interface SearchData {
   data: SongInfo[]
 }
 export default function SearchPage(props: SearchData) {
-  const lists = props.data.map(v => (
-    <ListSongs />
-  ))
   return (
     <>
       { props.data &&
-        props.data.map(v => (
-          <ListSongs key={v.id} />
+        props.data.map((v, index) => (
+          <ListSongs 
+            key={v.id}
+            index={index + 1}
+            data={v} />
         ))
       }
     </>

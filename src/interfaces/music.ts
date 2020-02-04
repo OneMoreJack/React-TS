@@ -6,14 +6,14 @@ export interface ArtistInfo {
 export interface SongInfo {
   id: number,
   name: string,
+  dt: number,
   al: {
     picUrl: string,
     name: string,
     id: number
   },
-  ar: ArtistInfo
+  ar: ArtistInfo[]
 }
-
 export interface SearchResult {
   code: number,
   data: {
