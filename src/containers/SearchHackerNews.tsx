@@ -12,7 +12,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 // import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { debounce } from '../utils'
+import { debounce } from 'utils'
 
 const useStyles = makeStyles(theme => ({
   formControl: {

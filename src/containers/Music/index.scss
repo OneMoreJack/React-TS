@@ -28,9 +28,6 @@
           }
 
           .song {
-            // &__index {
-            //   width: 50px;
-            // }
             &__name,
             &__artist,
             &__album {
@@ -39,18 +36,6 @@
               text-overflow: ellipsis;
               vertical-align: bottom;
             }
-            // &__name {
-            //   width: 200px;
-            //   margin-right: 80px;
-            // }
-            // &__artist {
-            //   width: 100px;
-            //   margin-right: 50px;
-            // }
-            // &__album {
-            //   width: 150px;
-            //   margin-right: 20px;
-            // }
           }
         }
       }

@@ -3,7 +3,7 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import InputBase from '@material-ui/core/InputBase'
 import SearchIcon from '@material-ui/icons/Search'
-import { musicSearch } from '../../api/music'
+import { musicSearch } from 'api/music'
 
 const primary = '#bf406e';
 const useStyles = makeStyles((theme: Theme) =>

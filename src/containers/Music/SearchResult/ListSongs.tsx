@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../index.scss'
-import { getDuration } from '../../../utils'
-import { SongInfo, ArtistInfo } from '../../../interfaces/music'
+import { getDuration } from 'utils'
+import { SongInfo, ArtistInfo } from 'interfaces/music'
 
 interface ListSong {
   data: SongInfo,

@@ -1,5 +1,5 @@
 import { get } from './index'
-import { SearchResult, ArtistInfo} from '../interfaces/music'
+import { SearchResult, ArtistInfo} from 'interfaces/music'
 
 interface SearchParams {
   keyword: string,

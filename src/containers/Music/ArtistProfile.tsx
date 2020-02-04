@@ -6,7 +6,7 @@
  */
 
 import React, { useState, useEffect } from 'react'
-import { getArtistInfo } from '../../api/music'
+import { getArtistInfo } from 'api/music'
 
 function Header() {
   let [artistId, setArtistId] = useState<number>(8103)

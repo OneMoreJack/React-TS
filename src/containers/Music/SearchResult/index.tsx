@@ -1,6 +1,6 @@
 import React from 'react'
 import ListSongs from './ListSongs'
-import { SongInfo } from '../../../interfaces/music'
+import { SongInfo } from 'interfaces/music'
 
 interface SearchData {
   data: SongInfo[]
