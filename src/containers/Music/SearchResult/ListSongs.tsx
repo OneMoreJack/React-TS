@@ -14,11 +14,11 @@ export default function ListSongs(props: ListSong) {
   }
   return (
     <div className="list-songs">
-      <div>{props.index > 9 ? props.index : `0${props.index}`}</div>
-      <div>{props.data.name}</div>
-      <div>{getArtists(props.data.ar)}</div>
-      <div>{props.data.al.name}</div>
-      <div>{getDuration(props.data.dt)}</div>
+      <div className="song__index">{props.index > 9 ? props.index : `0${props.index}`}</div>
+      <div className="song__name">{props.data.name}</div>
+      <div className="song__artist">{getArtists(props.data.ar)}</div>
+      <div className="song__album">{props.data.al.name}</div>
+      <div className="song__duration">{getDuration(props.data.dt)}</div>
     </div>
   )
 }
