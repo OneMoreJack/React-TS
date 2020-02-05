@@ -4,12 +4,13 @@ import './index.scss'
 import Header from './Header'
 import SearchResult from './SearchResult'
 import PlayerBar from './PlayerBar'
-import { SongInfo } from '../../interfaces/music'
-import { musicSearch } from '../../api/music'
+import { SongInfo } from 'interfaces/music'
+import { musicSearch } from 'api/music'
 
 function Music() {
   let [list, setList] = useState<SongInfo[] | null>(null)
   let [type, setType] = useState<string>('song')
+  let [cur, setCur] = useState<SongInfo | null>(null)
 
   async function getSearchResult(keyword: string) {
     const res = await musicSearch({
@@ -33,7 +34,7 @@ function Music() {
         <div className="content">
           {list && <SearchResult data={list} />}
         </div>
-        <PlayerBar />
+        <PlayerBar song={cur} />
       </main>
       {/* <ArtistProfile /> */}
     </div>
