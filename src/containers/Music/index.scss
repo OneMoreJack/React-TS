@@ -2,10 +2,14 @@
   width: calc(100% - 200px);
   margin: 50px auto;
   box-shadow:.3em .3em 1em lightgray;
+  border-radius: 5px;
+  overflow: hidden;
   .body {
+    position: relative;
+    padding-bottom: 60px;
     .content {
       background: #fff;
-      height: 85vh;
+      height: 77vh;
       overflow-y: scroll;
       .list {
         &-songs {

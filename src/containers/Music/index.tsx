@@ -3,6 +3,7 @@ import './index.scss'
 // import ArtistProfile from './ArtistProfile'
 import Header from './Header'
 import SearchResult from './SearchResult'
+import PlayerBar from './PlayerBar'
 import { SongInfo } from '../../interfaces/music'
 import { musicSearch } from '../../api/music'
 
@@ -32,6 +33,7 @@ function Music() {
         <div className="content">
           {list && <SearchResult data={list} />}
         </div>
+        <PlayerBar />
       </main>
       {/* <ArtistProfile /> */}
     </div>
