@@ -27,12 +27,22 @@ function Music() {
   const handleSearch = (keyword: string) => {
     getSearchResult(keyword)
   }
+
+  const handlePlay = (target: SongInfo) => {
+    setCur(target)
+  }
+
   return (
     <div className="music">
       <Header handleSearch={handleSearch} />
       <main className="body">
         <div className="content">
-          {list && <SearchResult data={list} />}
+          {
+            list && 
+            <SearchResult 
+              data={list}
+              handlePlay={handlePlay}/>
+          }
         </div>
         <PlayerBar song={cur} />
       </main>
