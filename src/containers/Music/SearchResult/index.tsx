@@ -15,7 +15,10 @@ export default function SearchPage(props: SearchData) {
     <>
       { props.data &&
         props.data.map((v, index) => (
-          <div key={v.id} onClick={(e) => handleClick(v)}>
+          <div 
+            key={v.id}
+            className="list-wrap"
+            onClick={(e) => handleClick(v)}>
             <ListSongs 
               index={index + 1}
               data={v} />

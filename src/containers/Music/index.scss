@@ -6,21 +6,23 @@
   overflow: hidden;
   .body {
     position: relative;
-    padding-bottom: 60px;
+    padding-bottom: 70px;
     .content {
       background: #fff;
       height: 77vh;
       overflow-y: scroll;
       .list {
+        &-wrap {
+          &:nth-of-type(2n) {
+            background: #f6f6f6;
+          }
+        }
         &-songs {
           display: grid;
           grid-template-columns: 1fr 4fr 2fr 4fr 1fr;
           text-align: left;
           padding: 4px 16px;
           height: 32px;
-          &:nth-of-type(2n) {
-            background: #f6f6f6;
-          }
           &:hover {
             background: lightgray;
           }
